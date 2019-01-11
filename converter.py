@@ -31,52 +31,47 @@ def main():
     if datatype is 1:
         print('Enter a binary value: (8 digits)')
         datainp = input()
-        convert(datatype, datainp)
+        convertToDecimal(datatype, datainp)
 
     elif datatype is 2:
         print('Enter a decimal value:')
         datainp = input()
-        convert(datatype, datainp)
+        convertToDecimal(datatype, datainp)
 
     elif datatype is 3:
         print('Enter a hexadecimal value:')
         datainp = input()
-        convert(datatype, datainp)
+        convertToDecimal(datatype, datainp)
 
     elif datatype is 4:
         print('Enter a octal value:')
         datainp = input()
-        convert(datatype, datainp)
+        convertToDecimal(datatype, datainp)
 
 
-def convert(type, input):
-    # Binary
-    if type == 1:
-        print('Binary:', input)
+def convertToDecimal(datatype, datainput):
+    dec = 0
+
+    if datatype == 1: # Binary
         binary = [128, 64, 32, 16, 8, 4, 2, 1]
-
         dec = 0
-        for index, bit in enumerate(input):
+        for index, bit in enumerate(datainput):
             if int(bit) is 1:
                 dec += binary[index]
-        print('Decimal:', dec)
 
+    elif datatype == 2: # Decimal
+        dec = datainput
 
+    elif datatype == 3: # Hexadecimal
+        A, B, C, D, E, F = 10, 11, 12, 13, 14, 15
+        #datainput = datainput.split(2)
 
+        print(datainput)
 
-
-    # Decimal
-    elif type == 2:
+    elif datatype == 4: # Octal
         print()
 
-    # Hexadecimal
-    elif type == 3:
-        print()
-
-    # Octal
-    elif type == 4:
-        print()
-
+    print('Decimal:', dec)
 
 if __name__ == "__main__":
     main()
