@@ -9,10 +9,7 @@ def main():
     parser.add_argument('-oct', '--octal', type=str, action='store', help='Octal')
     args = parser.parse_args()
 
-    print('--------------------------------------')
-    print('*** BIN/DEC/HEX/OCT CONVERTER TOOL ***')
-    print('--------------------------------------')
-    print('Please select a datatype:')
+    print('Select the datatype you wish to convert (1-4):')
     print('\n1. Binary')
     print('2. Decimal')
     print('3. Hexadecimal')
@@ -23,55 +20,72 @@ def main():
         datatype = int(datatype)
 
     while datatype not in range(1, 5):
-        print("Please select a datatype by entering a number between 1 and 4.")
+        print("Select a datatype by entering a number between 1 and 4.")
         datatype = input()
         if datatype.isdigit():
             datatype = int(datatype)
 
+    print('Enter a value:')
+    datainput = input()
+
     if datatype is 1:
-        print('Enter a binary value: (8 digits)')
-        datainp = input()
-        convertToDecimal(datatype, datainp)
+        datatype = 'Binary'
+        print(datatype+':', datainput)
+        print('Decimal:', convert_to_decimal(datatype, datainput))
+        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", ""))
+        print('Octal:', convert_to_oct(convert_to_decimal(datatype, datainput)).replace("0o", ""))
 
     elif datatype is 2:
-        print('Enter a decimal value:')
-        datainp = input()
-        convertToDecimal(datatype, datainp)
+        datatype = 'Decimal'
+        print('Binary:', convert_to_binary(int(datainput)).replace("0b", ""))
+        print(datatype + ':', datainput)
+        print('Hex:', convert_to_hex(int(datainput)).replace("0x", ""))
+        print('Octal:', convert_to_oct(int(datainput)).replace("0o", ""))
 
     elif datatype is 3:
-        print('Enter a hexadecimal value:')
-        datainp = input()
-        convertToDecimal(datatype, datainp)
+        datatype = 'Hexadecimal'
+        print('Binary:', convert_to_binary(convert_to_decimal(datatype, datainput)).replace("0b", ""))
+        print('Decimal:', convert_to_decimal(datatype, datainput))
+        print(datatype + ':', datainput)
+        print('Octal:', convert_to_oct(convert_to_decimal(datatype, datainput)).replace("0o", ""))
 
     elif datatype is 4:
-        print('Enter a octal value:')
-        datainp = input()
-        convertToDecimal(datatype, datainp)
+        datatype = 'Octal'
+        print('Binary:', convert_to_binary(convert_to_decimal(datatype, datainput)).replace("0b", ""))
+        print('Decimal:', convert_to_decimal(datatype, datainput))
+        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", ""))
+        print(datatype + ':', datainput)
 
 
-def convertToDecimal(datatype, datainput):
+def convert_to_decimal(datatype, datainput):
     dec = 0
-
-    if datatype == 1: # Binary
+    if datatype == 'Binary':
         binary = [128, 64, 32, 16, 8, 4, 2, 1]
-        dec = 0
         for index, bit in enumerate(datainput):
             if int(bit) is 1:
                 dec += binary[index]
+    elif datatype == 'Hexadecimal':
+        datainput = '0x' + datainput
+        dec = int(datainput, 16)
+    elif datatype == 'Octal':
+        dec = int(datainput, 8)
+    return dec
 
-    elif datatype == 2: # Decimal
-        dec = datainput
 
-    elif datatype == 3: # Hexadecimal
-        A, B, C, D, E, F = 10, 11, 12, 13, 14, 15
-        #datainput = datainput.split(2)
+def convert_to_binary(datainput):
+    binary = bin(datainput)
+    return binary
 
-        print(datainput)
 
-    elif datatype == 4: # Octal
-        print()
+def convert_to_oct(datainput):
+    octal = oct(datainput)
+    return octal
 
-    print('Decimal:', dec)
+
+def convert_to_hex(datainput):
+    hexadecimal = hex(datainput)
+    return hexadecimal
+
 
 if __name__ == "__main__":
     main()
