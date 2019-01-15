@@ -2,7 +2,7 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Pre-boot Manuscript CLI version ')
+    parser = argparse.ArgumentParser(description='Binary/Decimal/Hex/Octal converting tool by Simpan.')
     parser.add_argument('-bin', '--binary', type=str, action='store', help='Binary')
     parser.add_argument('-dec', '--decimal', type=str, action='store', help='Decimal')
     parser.add_argument('-hex', '--hexadecimal', type=int, action='store', help='Hexadecimal')
