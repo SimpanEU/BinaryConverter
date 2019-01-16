@@ -72,6 +72,7 @@ def convert_to_decimal(datatype, datainput):
         dec = int(datainput, 16)
 
     elif datatype == 'Octal':
+        datainput = '0o' + datainput
         dec = int(datainput, 8)
 
     return dec
