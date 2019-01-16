@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 
 
@@ -10,7 +11,7 @@ def main():
     args = parser.parse_args()
 
     print('Select the datatype you wish to convert (1-4):')
-    print('\n1. Binary')
+    print('\n1. Binary (8 bits)')
     print('2. Decimal')
     print('3. Hexadecimal')
     print('4. Octal\n')
@@ -27,19 +28,20 @@ def main():
 
     print('Enter a value:')
     datainput = input()
+    print()
 
     if datatype is 1:
         datatype = 'Binary'
         print(datatype+':', datainput)
         print('Decimal:', convert_to_decimal(datatype, datainput))
-        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", ""))
+        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", "").upper())
         print('Octal:', convert_to_oct(convert_to_decimal(datatype, datainput)).replace("0o", ""))
 
     elif datatype is 2:
         datatype = 'Decimal'
         print('Binary:', convert_to_binary(int(datainput)).replace("0b", ""))
         print(datatype + ':', datainput)
-        print('Hex:', convert_to_hex(int(datainput)).replace("0x", ""))
+        print('Hex:', convert_to_hex(int(datainput)).replace("0x", "").upper())
         print('Octal:', convert_to_oct(int(datainput)).replace("0o", ""))
 
     elif datatype is 3:
@@ -53,7 +55,7 @@ def main():
         datatype = 'Octal'
         print('Binary:', convert_to_binary(convert_to_decimal(datatype, datainput)).replace("0b", ""))
         print('Decimal:', convert_to_decimal(datatype, datainput))
-        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", ""))
+        print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", "").upper())
         print(datatype + ':', datainput)
 
 
