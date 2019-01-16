@@ -32,7 +32,7 @@ def main():
 
     if datatype is 1:
         datatype = 'Binary'
-        print(datatype+':', datainput)
+        print(datatype + ':', datainput)
         print('Decimal:', convert_to_decimal(datatype, datainput))
         print('Hex:', convert_to_hex(convert_to_decimal(datatype, datainput)).replace("0x", "").upper())
         print('Octal:', convert_to_oct(convert_to_decimal(datatype, datainput)).replace("0o", ""))
@@ -66,11 +66,14 @@ def convert_to_decimal(datatype, datainput):
         for index, bit in enumerate(datainput):
             if int(bit) is 1:
                 dec += binary[index]
+
     elif datatype == 'Hexadecimal':
         datainput = '0x' + datainput
         dec = int(datainput, 16)
+
     elif datatype == 'Octal':
         dec = int(datainput, 8)
+
     return dec
 
 
